@@ -1,0 +1,15 @@
+command /ledak:
+    permission: ledak.admin
+    permission message: &cUnknown or incomplete command. See below for error%nl%&n%command%&r&c<--&o[HERE]
+    trigger:
+        execute console command "effect give @a minecraft:slowness 120 255"
+        execute console command "effect give @a minecraft:darkness 120 255"
+        execute console command "effect give @a minecraft:nausea 120 2 true"
+        loop 120 times:
+            play sound "minecraft:entity.wither.spawn" at pitch 2 to player
+            send title "&4&lHAHAHAH!!" to all player
+            set {_x} to random number between -20 and 20
+            set {_y} to random number between -16 and 16
+            set {_z} to random number between -20 and 20
+            spawn primed tnt at location of player offset by vector({_x}, {_y}, {_z})
+            wait 1 tick
